@@ -1,0 +1,18 @@
+condor:
+     image: mygreffe/condor
+     ports:
+       - "8090:8090"
+     environment:
+       - "kafka.bootstrap.servers=${KAFKA}"
+       
+stinger:
+     image: mygreffe/stinger
+     ports:
+       - "8095:8095"
+     environment:
+       - "kafka.bootstrap.servers=${KAFKA}"
+       
+outlaw:
+     image: mygreffe/outlaw
+     ports:
+       - "8100:8100"
