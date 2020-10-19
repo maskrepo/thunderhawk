@@ -1,18 +1,39 @@
 condor:
-     image: mygreffe/condor
-     ports:
-       - "8090:8090"
-     environment:
-       - "kafka.bootstrap.servers=${KAFKA}"
-       
+  image: mygreffe/condor-jvm
+  ports:
+    - "8090:8090"
+  environment:
+    - "kafka.bootstrap.servers=${KAFKA}"
+    - "quarkus.http.host=${LOCALHOST}"
+
 stinger:
-     image: mygreffe/stinger
-     ports:
-       - "8095:8095"
-     environment:
-       - "kafka.bootstrap.servers=${KAFKA}"
-       
+  image: mygreffe/stinger-jvm
+  ports:
+    - "8095:8095"
+  environment:
+    - "kafka.bootstrap.servers=${KAFKA}"
+    - "quarkus.http.host=${LOCALHOST}"
+
+gator:
+  image: mygreffe/gator-jvm
+  ports:
+    - "8093:8093"
+  environment:
+    - "kafka.bootstrap.servers=${KAFKA}"
+    - "quarkus.http.host=${LOCALHOST}"
+
+rhino:
+  image: mygreffe/rhino-jvm
+  ports:
+    - "8081:8081"
+  environment:
+    - "kafka.bootstrap.servers=${KAFKA}"
+    - "quarkus.http.host=${LOCALHOST}"
+
 outlaw:
-     image: mygreffe/outlaw
-     ports:
-       - "8100:8100"
+  image: mygreffe/outlaw-jvm
+  ports:
+    - "8100:8100"
+  environment:
+    - "kafka.bootstrap.servers=${KAFKA}"
+    - "quarkus.http.host=${LOCALHOST}"
